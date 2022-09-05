@@ -4,8 +4,6 @@ from importlib import import_module
 
 
 import pytest
-from pytest_postgresql.janitor import DatabaseJanitor 
-from celery import Celery
 from commons.config import CommonBaseConfig
 from commons.db import BaseDb
 from commons.enums import AppName
