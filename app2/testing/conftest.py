@@ -1,8 +1,10 @@
+from datetime import datetime, timedelta
 import pytest
 from conftest import ScopedSession, base_db  # type: ignore
 from fastapi.testclient import TestClient
-from ..testing.data import SeedData
-
+from app2.app.config import config
+from jose import jwt
+from .data import SeedData
 
 @pytest.fixture(autouse=True, scope="session")
 def seed_data(client: TestClient):
@@ -27,3 +29,16 @@ def seed_data(client: TestClient):
     db_connection.commit()
 
     return data
+    
+def genrate_jwt_for_user(user_id: str, user_username:str):
+    now = datetime.now()
+    token_expire_at = now + timedelta(seconds=config.AUTH_TOKEN_EXPIRE_IN)
+    payload = {
+        "sub": user_id,
+        "username": user_username,
+        "iat": int(now.timestamp()),
+        "exp": int(token_expire_at.timestamp()),
+    }
+
+    encoded_jwt = jwt.encode(payload, key=config.AUTH_JWT_KEY, algorithm="HS256")
+    return encoded_jwt

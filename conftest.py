@@ -4,8 +4,6 @@ from importlib import import_module
 
 
 import pytest
-from pytest_postgresql.janitor import DatabaseJanitor 
-from celery import Celery
 from commons.config import CommonBaseConfig
 from commons.db import BaseDb
 from commons.enums import AppName
@@ -104,7 +102,7 @@ def session():
 
 @pytest.fixture(scope="session")
 def client() -> TestClient:
-    
+
     app.dependency_overrides[get_db_session] = get_db_session_overwrite
     app.dependency_overrides[get_db_read_session] = get_db_session_overwrite
 
@@ -115,7 +113,7 @@ def client() -> TestClient:
 
     os.chdir(f"./{APP_NAME}")
     os.system("alembic upgrade head")  # create all the tables
-
+    
     yield TestClient(app)
 
     base_db.engine.dispose()

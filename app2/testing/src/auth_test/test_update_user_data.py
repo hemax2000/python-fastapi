@@ -3,7 +3,7 @@ from fastapi.testclient import TestClient
 
 from app2.testing.data import SeedData
 
-def test_get_current_user_data(client: TestClient, seed_data: SeedData,):
+def test_update_user_data(client: TestClient, seed_data: SeedData,):
 
     res = client.patch(
         url="/user/",
@@ -17,4 +17,4 @@ def test_get_current_user_data(client: TestClient, seed_data: SeedData,):
     }
     )
     assert res.status_code == 200
-    assert res.json()["first_name"] != seed_data.users[0]["first_name"]
+    assert res.json()["email"] != seed_data.users[0]["email"]

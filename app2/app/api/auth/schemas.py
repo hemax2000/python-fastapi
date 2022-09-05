@@ -22,7 +22,7 @@ class UserResponse(BaseModel):
 
 class PublicUserResponse(BaseModel):
     username: str
-    first_name: str
+    email: str
 
     class Config:
         orm_mode = True
