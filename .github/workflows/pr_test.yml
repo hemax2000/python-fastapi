@@ -1,0 +1,15 @@
+name: auto tests
+
+on: pull_request
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: |
+          docker compose run --rm app1-pytest
+          docker compose run --rm app2-pytest
+        name: "runs pytest using docker"
