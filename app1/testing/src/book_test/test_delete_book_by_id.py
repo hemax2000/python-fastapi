@@ -12,7 +12,7 @@ def create_a_book_for_2_users(client: TestClient, seed_data: SeedData):
         json={"title": "random book1"},
         headers={"Authorization": f"Bearer {seed_data.users_tokens[0]}"},
     )
-    assert res.status_code == 404
+    assert res.status_code == 200
 
     res = client.post(
         url="/book",
