@@ -17,9 +17,7 @@ def signup_a_new_user_(
     db_session: Session,
 ):
     user = Users(
-            password=body.password,
-            username=body.username,
-            email= body.email,
+            **body.dict()
             )
     db_session.add(
         user
