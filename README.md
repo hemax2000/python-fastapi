@@ -18,3 +18,6 @@
 ### to run the tests
 
 `docker compose run --rm pytest-${app name}`
+
+![image](https://user-images.githubusercontent.com/95032871/198856386-59ef662e-4bc1-4f20-8e6b-b11e5cf407a3.png)
+
