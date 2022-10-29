@@ -19,5 +19,10 @@
 
 `docker compose run --rm pytest-${app name}`
 
+first app for books
 ![image](https://user-images.githubusercontent.com/95032871/198856386-59ef662e-4bc1-4f20-8e6b-b11e5cf407a3.png)
 
+--------------------------------------------------------
+
+second app for users
+![image](https://user-images.githubusercontent.com/95032871/198856434-880680f7-79d4-40ef-a05e-7a17e77f2116.png)
